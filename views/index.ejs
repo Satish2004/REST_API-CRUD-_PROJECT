@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/style.css" class="css" />
+  </head>
+  <body>
+    <h1>Quora Post</h1>
+    <button>
+      <a class="ancherTag" href="http://localhost:9090/posts/new"
+        >To Create New Post</a
+      >
+    </button>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    <% for(let post of posts){ %>
+    <div class="card_container">
+      <div class="post__container">
+        <h3 class="post__title">@<%= post.username %></h3>
+        <br />
+        <p class="post__content"><%= post.content %></p>
+        <button>
+          <a class="ancherTag" href="http://localhost:9090/posts/<%= post.id %>"
+            >See in details</a
+          >
+        </button>
+        <button>
+          <a class="ancherTag" href="http://localhost:9090/posts/<%= post.id %>/edit"
+            >Edit</a
+          >
+        </button>
+       <form action="/post/<%=post.id%>?_method=DELETE" method="post">
+
+        <button class="deleteBtn" >Delete</button>
+       </form>
+      </div>
+    </div>
+    <% } %>
+  </body>
+</html>
